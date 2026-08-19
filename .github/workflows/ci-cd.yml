@@ -38,6 +38,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,7 +53,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -73,6 +76,4 @@ jobs:
       - name: Deploy via Ansible
         run: |
           echo "Deploying to Yandex Cloud..."
-          # Здесь будет команда для деплоя через Ansible
-          # ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/deploy.yml
           echo "Deploy will be configured after VM creation"
