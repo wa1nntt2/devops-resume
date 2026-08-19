@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer - Резюме</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Твое Имя</h1>
+            <p class="subtitle">DevOps Engineer</p>
+            <div class="contacts">
+                <span>📧 email@example.com</span>
+                <span>📱 +7 (XXX) XXX-XX-XX</span>
+                <span>📍 Город, Россия</span>
+                <span>💼 GitHub: github.com/yourusername</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>О себе</h2>
+            <p class="about">
+                DevOps инженер с опытом автоматизации инфраструктуры, 
+                настройки CI/CD пайплайнов и контейнеризации приложений. 
+                Увлекаюсь облачными технологиями и практиками IaC.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Технический стек</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Контейнеризация</h3>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Helm</span>
+                </div>
+                <div class="skill-category">
+                    <h3>CI/CD</h3>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">GitLab CI</span>
+                    <span class="tag">Jenkins</span>
+                </div>
+                <div class="skill-category">
+                    <h3>IaC & Automation</h3>
+                    <span class="tag">Terraform</span>
+                    <span class="tag">Ansible</span>
+                    <span class="tag">Packer</span>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud</h3>
+                    <span class="tag">Yandex Cloud</span>
+                    <span class="tag">AWS</span>
+                    <span class="tag">Azure</span>
+                </div>
+                <div class="skill-category">
+                    <h3>Мониторинг</h3>
+                    <span class="tag">Prometheus</span>
+                    <span class="tag">Grafana</span>
+                    <span class="tag">ELK Stack</span>
+                </div>
+                <div class="skill-category">
+                    <h3>Языки</h3>
+                    <span class="tag">Python</span>
+                    <span class="tag">Bash</span>
+                    <span class="tag">Go (базово)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Опыт работы</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>DevOps Engineer</h3>
+                    <span class="date">2023 - настоящее время</span>
+                </div>
+                <p class="company">Компания / Проект</p>
+                <ul>
+                    <li>Автоматизация развертывания инфраструктуры с помощью Terraform и Ansible</li>
+                    <li>Настройка и оптимизация CI/CD пайплайнов в GitHub Actions</li>
+                    <li>Миграция приложений на Docker и Kubernetes</li>
+                    <li>Внедрение мониторинга на базе Prometheus и Grafana</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>System Administrator</h3>
+                    <span class="date">2021 - 2023</span>
+                </div>
+                <p class="company">Компания / Проект</p>
+                <ul>
+                    <li>Администрирование Linux серверов (Ubuntu, CentOS)</li>
+                    <li>Настройка web-серверов Nginx, Apache</li>
+                    <li>Автоматизация задач с помощью Bash скриптов</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Проекты</h2>
+            <div class="project-item">
+                <h3>DevOps Resume Site</h3>
+                <p>Этот проект - сайт-резюме с полным DevOps циклом:</p>
+                <ul>
+                    <li>Flask приложение в Docker контейнере</li>
+                    <li>Оркестрация через Kubernetes</li>
+                    <li>Автоматический деплой через Ansible</li>
+                    <li>CI/CD в GitHub Actions</li>
+                    <li>Развертывание в Yandex Cloud</li>
+                </ul>
+                <a href="https://github.com/yourusername/devops-resume" class="project-link">GitHub репозиторий →</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Образование</h2>
+            <div class="education-item">
+                <h3>Университет / Курсы</h3>
+                <p class="date">Годы обучения</p>
+                <p>Специальность / Направление</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 - Создано с ❤️ и Flask</p>
+        </footer>
+    </div>
+</body>
+</html>

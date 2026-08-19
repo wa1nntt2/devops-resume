@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-resume
+  labels:
+    app: devops-resume
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-resume
+  template:
+    metadata:
+      labels:
+        app: devops-resume
+    spec:
+      containers:
+      - name: devops-resume
+        image: devops-resume:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 20

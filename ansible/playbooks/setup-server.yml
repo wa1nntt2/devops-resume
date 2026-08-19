@@ -1,0 +1,39 @@
+---
+- name: Настройка сервера для DevOps Resume
+  hosts: all
+  become: yes
+  tasks:
+    - name: Обновление системы
+      apt:
+        update_cache: yes
+        upgrade: dist
+        cache_valid_time: 3600
+
+    - name: Установка необходимых пакетов
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+          - git
+          - curl
+          - htop
+          - nginx
+        state: present
+
+    - name: Запуск Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Добавление пользователя в группу docker
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Проверка Docker
+      command: docker --version
+      register: docker_version
+    - debug:
+        msg: "Docker version: {{ docker_version.stdout }}"

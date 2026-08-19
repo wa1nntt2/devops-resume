@@ -1,0 +1,40 @@
+---
+- name: Деплой DevOps Resume
+  hosts: all
+  become: yes
+  vars:
+    app_dir: /opt/devops-resume
+    repo_url: https://github.com/yourusername/devops-resume.git
+
+  tasks:
+    - name: Создание директории приложения
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Клонирование репозитория
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ app_dir }}"
+        version: main
+        force: yes
+
+    - name: Сборка Docker образа
+      docker_image:
+        name: devops-resume
+        source: build
+        build:
+          path: "{{ app_dir }}"
+        state: present
+
+    - name: Запуск контейнера
+      docker_container:
+        name: devops-resume
+        image: devops-resume:latest
+        state: started
+        restart_policy: unless-stopped
+        ports:
+          - "5001:5000"
+        env:
+          FLASK_ENV: "production"

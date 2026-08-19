@@ -1,0 +1,28 @@
+---
+- name: Тестирование Ansible
+  hosts: all
+  become: yes
+  tasks:
+    - name: Проверка Python
+      command: python3 --version
+      register: python_version
+    - debug:
+        msg: "Python version: {{ python_version.stdout }}"
+
+    - name: Проверка Docker
+      command: docker --version
+      register: docker_version
+    - debug:
+        msg: "Docker version: {{ docker_version.stdout }}"
+
+    - name: Проверка Kubectl
+      command: kubectl version --client
+      register: kubectl_version
+    - debug:
+        msg: "Kubectl version: {{ kubectl_version.stdout }}"
+
+    - name: Проверка свободного места
+      command: df -h /
+      register: disk_space
+    - debug:
+        msg: "{{ disk_space.stdout }}"
