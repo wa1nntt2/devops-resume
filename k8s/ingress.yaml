@@ -2,9 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: devops-resume-ingress
+  namespace: devops-resume
+  labels:
+    app: devops-resume
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  ingressClassName: nginx
   rules:
   - host: devops-resume.local
     http:
@@ -16,3 +21,7 @@ spec:
             name: devops-resume-service
             port:
               number: 80
+  tls:
+  - hosts:
+    - devops-resume.local
+    secretName: devops-resume-tls
