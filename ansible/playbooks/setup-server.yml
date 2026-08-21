@@ -2,6 +2,7 @@
 - name: Настройка сервера для DevOps Resume
   hosts: all
   become: yes
+  
   tasks:
     - name: Обновление системы
       apt:
@@ -13,11 +14,19 @@
       apt:
         name:
           - docker.io
-          - docker-compose
+          - docker-compose-v2
           - git
           - curl
           - htop
           - nginx
+          - python3-pip
+        state: present
+
+    - name: Установка Docker SDK для Python
+      pip:
+        name:
+          - docker
+          - docker-compose
         state: present
 
     - name: Запуск Docker
@@ -28,12 +37,19 @@
 
     - name: Добавление пользователя в группу docker
       user:
-        name: ubuntu
+        name: "{{ ansible_user }}"
         groups: docker
         append: yes
 
-    - name: Проверка Docker
-      command: docker --version
-      register: docker_version
-    - debug:
-        msg: "Docker version: {{ docker_version.stdout }}"
+    - name: Создание директории для приложения
+      file:
+        path: /opt/devops-resume
+        state: directory
+        mode: '0755'
+
+    - name: Информация о системе
+      debug:
+        msg: |
+          OS: {{ ansible_distribution }} {{ ansible_distribution_version }}
+          CPU: {{ ansible_processor_count }} cores
+          RAM: {{ ansible_memtotal_mb }} MB

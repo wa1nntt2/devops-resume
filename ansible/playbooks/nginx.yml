@@ -1,0 +1,82 @@
+---
+- name: Настройка Nginx с HTTPS для DevOps Resume
+  hosts: all
+  become: yes
+  
+  vars:
+    domain: devops-resume.local
+    app_port: 5001
+    http_port: 8083
+    https_port: 8443
+    
+  tasks:
+    - name: Установка Nginx и OpenSSL
+      apt:
+        name:
+          - nginx
+          - openssl
+        state: present
+
+    - name: Создание директории для сертификатов
+      file:
+        path: /etc/nginx/ssl
+        state: directory
+        mode: '0755'
+
+    - name: Генерация самоподписанного сертификата
+      command: >
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048
+        -keyout /etc/nginx/ssl/devops-resume.key
+        -out /etc/nginx/ssl/devops-resume.crt
+        -subj "/C=RU/ST=Moscow/L=Moscow/O=DevOps/CN={{ domain }}"
+      args:
+        creates: /etc/nginx/ssl/devops-resume.crt
+
+    - name: Копирование конфигурации Nginx
+      copy:
+        src: ../files/nginx/devops-resume.conf
+        dest: /etc/nginx/sites-available/devops-resume
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Создание символической ссылки
+      file:
+        src: /etc/nginx/sites-available/devops-resume
+        dest: /etc/nginx/sites-enabled/devops-resume
+        state: link
+
+    - name: Удаление дефолтной конфигурации
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Проверка конфигурации Nginx
+      command: nginx -t
+      register: nginx_test
+      changed_when: false
+
+    - name: Перезапуск Nginx
+      systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
+
+    - name: Проверка HTTPS
+      uri:
+        url: "https://localhost:{{ https_port }}/health"
+        method: GET
+        status_code: 200
+        validate_certs: no
+      register: https_health
+      retries: 5
+      delay: 2
+      until: https_health.status == 200
+
+    - name: Результат настройки
+      debug:
+        msg: |
+          Nginx с HTTPS настроен!
+          HTTP: http://localhost:{{ http_port }} (редирект)
+          HTTPS: https://localhost:{{ https_port }}
+          Health: {{ https_health.json }}
