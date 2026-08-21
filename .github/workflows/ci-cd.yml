@@ -76,4 +76,6 @@ jobs:
       - name: Deploy via Ansible
         run: |
           echo "Deploying to Yandex Cloud..."
+          # Здесь будет команда для деплоя через Ansible
+          # ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/deploy.yml
           echo "Deploy will be configured after VM creation"

@@ -1,0 +1,144 @@
+---
+- name: Настройка мониторинга для DevOps Resume
+  hosts: all
+  become: yes
+  
+  vars:
+    prometheus_port: 9090
+    grafana_port: 3000
+    node_exporter_port: 9100
+    
+  tasks:
+    - name: Создание директорий для мониторинга
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - /opt/monitoring/prometheus
+        - /opt/monitoring/grafana
+        - /opt/monitoring/grafana/provisioning/datasources
+
+    - name: Копирование конфигурации Prometheus
+      copy:
+        src: ../files/monitoring/prometheus.yml
+        dest: /opt/monitoring/prometheus/prometheus.yml
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Копирование конфигурации Grafana
+      copy:
+        src: ../files/monitoring/datasource.yml
+        dest: /opt/monitoring/grafana/provisioning/datasources/prometheus.yml
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Создание docker-compose для мониторинга
+      copy:
+        content: |
+          version: '3.8'
+          
+          services:
+            prometheus:
+              image: prom/prometheus:latest
+              container_name: prometheus
+              restart: unless-stopped
+              volumes:
+                - /opt/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+                - prometheus_data:/prometheus
+              command:
+                - '--config.file=/etc/prometheus/prometheus.yml'
+                - '--storage.tsdb.path=/prometheus'
+                - '--web.enable-lifecycle'
+              ports:
+                - "{{ prometheus_port }}:9090"
+              networks:
+                - monitoring
+            
+            grafana:
+              image: grafana/grafana:latest
+              container_name: grafana
+              restart: unless-stopped
+              environment:
+                - GF_SECURITY_ADMIN_USER=admin
+                - GF_SECURITY_ADMIN_PASSWORD=admin
+                - GF_USERS_ALLOW_SIGN_UP=false
+              volumes:
+                - grafana_data:/var/lib/grafana
+                - /opt/monitoring/grafana/provisioning:/etc/grafana/provisioning
+              ports:
+                - "{{ grafana_port }}:3000"
+              networks:
+                - monitoring
+              depends_on:
+                - prometheus
+            
+            node-exporter:
+              image: prom/node-exporter:latest
+              container_name: node-exporter
+              restart: unless-stopped
+              volumes:
+                - /proc:/host/proc:ro
+                - /sys:/host/sys:ro
+                - /:/rootfs:ro
+              command:
+                - '--path.procfs=/host/proc'
+                - '--path.rootfs=/rootfs'
+                - '--path.sysfs=/host/sys'
+                - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+              ports:
+                - "{{ node_exporter_port }}:9100"
+              networks:
+                - monitoring
+          
+          volumes:
+            prometheus_data:
+            grafana_data:
+          
+          networks:
+            monitoring:
+              driver: bridge
+        dest: /opt/monitoring/docker-compose.yml
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Запуск мониторинга
+      docker_compose:
+        project_src: /opt/monitoring
+        files:
+          - docker-compose.yml
+        state: present
+        pull: yes
+
+    - name: Проверка Prometheus
+      uri:
+        url: "http://localhost:{{ prometheus_port }}/-/healthy"
+        method: GET
+        status_code: 200
+      register: prometheus_health
+      retries: 5
+      delay: 5
+      until: prometheus_health.status == 200
+
+    - name: Проверка Grafana
+      uri:
+        url: "http://localhost:{{ grafana_port }}/api/health"
+        method: GET
+        status_code: 200
+      register: grafana_health
+      retries: 5
+      delay: 5
+      until: grafana_health.status == 200
+
+    - name: Результат настройки
+      debug:
+        msg: |
+          Мониторинг настроен!
+          Prometheus: http://localhost:{{ prometheus_port }}
+          Grafana: http://localhost:{{ grafana_port }}
+          Node Exporter: http://localhost:{{ node_exporter_port }}/metrics
+          Prometheus Health: {{ prometheus_health.status }}
+          Grafana Health: {{ grafana_health.json }}
