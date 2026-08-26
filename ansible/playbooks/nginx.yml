@@ -4,10 +4,10 @@
   become: yes
   
   vars:
-    domain: devops-resume.local
+    domain: _
     app_port: 5001
-    http_port: 8083
-    https_port: 8443
+    http_port: 80
+    https_port: 443
     
   tasks:
     - name: Установка Nginx и OpenSSL
@@ -28,7 +28,7 @@
         openssl req -x509 -nodes -days 365 -newkey rsa:2048
         -keyout /etc/nginx/ssl/devops-resume.key
         -out /etc/nginx/ssl/devops-resume.crt
-        -subj "/C=RU/ST=Moscow/L=Moscow/O=DevOps/CN={{ domain }}"
+        -subj "/C=RU/ST=Moscow/L=Moscow/O=DevOps/CN=devops-resume"
       args:
         creates: /etc/nginx/ssl/devops-resume.crt
 
@@ -64,7 +64,7 @@
 
     - name: Проверка HTTPS
       uri:
-        url: "https://localhost:{{ https_port }}/health"
+        url: "https://localhost/health"
         method: GET
         status_code: 200
         validate_certs: no
@@ -77,6 +77,6 @@
       debug:
         msg: |
           Nginx с HTTPS настроен!
-          HTTP: http://localhost:{{ http_port }} (редирект)
-          HTTPS: https://localhost:{{ https_port }}
+          HTTP: http://localhost (редирект)
+          HTTPS: https://localhost
           Health: {{ https_health.json }}
