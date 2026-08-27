@@ -5,131 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Engineer | Резюме</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="glass-card">
-            <header class="header">
-                <h1>Иван Иванов</h1>
+        <!-- Левая колонка -->
+        <div class="left-column">
+            <!-- Профиль -->
+            <div class="header">
+                <h1>Твоё Имя</h1>
                 <p class="subtitle">DevOps Engineer</p>
                 <div class="contacts">
-                    <span>📧 wa1nntt2@gmail.com</span>
-                    <span>📱 +7 (902) 239 92 37</span>
-                    <span>📍 Сызрань, Россия</span>
-                    <span>💻 github.com/wa1nntt2</span>
-                </div>
-            </header>
-        </div>
-
-        <div class="glass-card">
-            <section class="section">
-                <h2>🛠 Технический стек</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Контейнеризация</h3>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>Сызрань, Россия</span>
                     </div>
-                    <div class="skill-category">
-                        <h3>CI/CD</h3>
-                        <span class="tag">GitHub Actions</span>
-                        <span class="tag">GitLab CI</span>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span>+7 (902) 239 92 37</span>
                     </div>
-                    <div class="skill-category">
-                        <h3>IaC</h3>
-                        <span class="tag">Ansible</span>
-                        <span class="tag">Terraform</span>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>wa1nntt2@gmail.com</span>
                     </div>
-                    <div class="skill-category">
-                        <h3>Мониторинг</h3>
-                        <span class="tag">Prometheus</span>
-                        <span class="tag">Grafana</span>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Языки</h3>
-                        <span class="tag">Python</span>
-                        <span class="tag">Bash</span>
-                        <span class="tag">Go</span>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Облака</h3>
-                        <span class="tag">Yandex Cloud</span>
-                        <span class="tag">AWS</span>
+                    <div class="contact-item">
+                        <span class="icon">💻</span>
+                        <span>github.com/wa1nntt2</span>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Навыки -->
+            <div class="section">
+                <h2 class="section-title">🛠 Навыки</h2>
+                <ul class="skills-list">
+                    <li><span class="skill-name">🐳 Docker</span><span class="skill-level">Продвинутый</span></li>
+                    <li><span class="skill-name">☸️ Kubernetes</span><span class="skill-level">Продвинутый</span></li>
+                    <li><span class="skill-name">⚡ GitHub Actions</span><span class="skill-level">Продвинутый</span></li>
+                    <li><span class="skill-name">🔄 GitLab CI</span><span class="skill-level">Опытный</span></li>
+                    <li><span class="skill-name">📦 Ansible</span><span class="skill-level">Продвинутый</span></li>
+                    <li><span class="skill-name">🏗️ Terraform</span><span class="skill-level">Опытный</span></li>
+                    <li><span class="skill-name">📊 Prometheus + Grafana</span><span class="skill-level">Продвинутый</span></li>
+                    <li><span class="skill-name">🐍 Python</span><span class="skill-level">Опытный</span></li>
+                    <li><span class="skill-name">📝 Bash</span><span class="skill-level">Опытный</span></li>
+                    <li><span class="skill-name">☁️ Yandex Cloud</span><span class="skill-level">Опытный</span></li>
+                    <li><span class="skill-name">🌐 Nginx</span><span class="skill-level">Опытный</span></li>
+                </ul>
+            </div>
+
+            <!-- Языки -->
+            <div class="section">
+                <h2 class="section-title">🌍 Языки</h2>
+                <div class="language-item">
+                    <span>Русский</span>
+                    <span class="lang-level">Родной</span>
+                </div>
+                <div class="language-item">
+                    <span>Английский</span>
+                    <span class="lang-level">B1 — Средний</span>
+                </div>
+            </div>
+
+            <!-- Качества -->
+            <div class="section">
+                <h2 class="section-title">⭐ Качества</h2>
+                <div class="qualities">
+                    <span class="quality-tag">Автоматизация</span>
+                    <span class="quality-tag">CI/CD</span>
+                    <span class="quality-tag">Мониторинг</span>
+                    <span class="quality-tag">Linux</span>
+                    <span class="quality-tag">Командная работа</span>
+                    <span class="quality-tag">Обучаемость</span>
+                </div>
+            </div>
         </div>
 
-        <div class="glass-card">
-            <section class="section">
-                <h2>💼 Опыт работы</h2>
+        <!-- Правая колонка -->
+        <div class="right-column">
+            <!-- О себе -->
+            <div class="section">
+                <h2 class="section-title">👤 О себе</h2>
+                <p class="about-text">
+                    DevOps-инженер с фокусом на построение CI/CD пайплайнов, 
+                    контейнеризацию и автоматизацию инфраструктуры. 
+                    Строю полный цикл разработки — от написания кода до деплоя в облако. 
+                    Постоянно изучаю новые технологии и подходы.
+                </p>
+            </div>
+
+            <!-- Опыт работы -->
+            <div class="section">
+                <h2 class="section-title">💼 Опыт работы</h2>
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h3>DevOps Engineer (обучение)</h3>
+                        <div>
+                            <h3>DevOps Engineer (обучение)</h3>
+                            <div class="company">Самостоятельные проекты</div>
+                        </div>
                         <span class="date">2025 — настоящее время</span>
                     </div>
                     <ul>
-                        <li>Построение полноценного CI/CD пайплайна с нуля</li>
-                        <li>Контейнеризация приложений (Docker, Kubernetes)</li>
-                        <li>Автоматизация деплоя через Ansible и GitHub Actions</li>
-                        <li>Настройка мониторинга (Prometheus, Grafana, Alertmanager)</li>
+                        <li>Построение полноценного CI/CD пайплайна с нуля (GitHub Actions)</li>
+                        <li>Контейнеризация приложений (Docker, Docker Compose)</li>
+                        <li>Оркестрация контейнеров (Kubernetes, Minikube)</li>
+                        <li>Автоматизация деплоя через Ansible</li>
+                        <li>Настройка мониторинга (Prometheus, Grafana, Node Exporter)</li>
+                        <li>Деплой в Yandex Cloud (VM, Nginx, HTTPS)</li>
                     </ul>
+                    <div class="achievement">
+                        🏆 Создан полноценный сайт-резюме с нуля с полным циклом CI/CD
+                    </div>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <div class="glass-card">
-            <section class="section">
-                <h2>🚀 Проекты</h2>
-                <div class="project-item">
+            <!-- Проекты -->
+            <div class="section">
+                <h2 class="section-title">🚀 Проекты</h2>
+                <div class="experience-item" style="margin-bottom: 16px;">
                     <div class="experience-header">
                         <h3>DevOps Resume Site</h3>
                         <span class="date">2026</span>
                     </div>
                     <ul>
-                        <li>Полный цикл разработки: Flask → Docker → Kubernetes → Ansible → Yandex Cloud</li>
-                        <li>Автоматический CI/CD: GitHub Actions (тесты, сборка, деплой)</li>
-                        <li>Мониторинг: Prometheus + Grafana с кастомными дашбордами</li>
+                        <li>Полный цикл: Flask → Docker → K8s → Ansible → Yandex Cloud</li>
+                        <li>CI/CD: GitHub Actions (тесты, сборка, деплой)</li>
+                        <li>Мониторинг: Prometheus + Grafana</li>
                     </ul>
-                    <a href="https://github.com/wa1nntt2/devops-resume" class="project-link" target="_blank">Посмотреть на GitHub →</a>
                 </div>
-                <div class="project-item">
+                <div class="experience-item" style="margin-bottom: 0;">
                     <div class="experience-header">
                         <h3>IT Interview Trainer</h3>
                         <span class="date">2025</span>
                     </div>
                     <ul>
-                        <li>Fullstack приложение: FastAPI + React + PostgreSQL</li>
-                        <li>CI/CD через GitLab CI с деплоем на VPS</li>
+                        <li>Fullstack: FastAPI + React + PostgreSQL</li>
+                        <li>CI/CD: GitLab CI, Docker</li>
                     </ul>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <div class="glass-card">
-            <section class="section">
-                <h2>📚 Образование</h2>
-                <div class="education-item">
-                    <h3>DevOps простым языком</h3>
-                    <span class="date">2025</span>
+            <!-- Образование -->
+            <div class="section">
+                <h2 class="section-title">📚 Образование</h2>
+                <div class="course-item">
+                    <div class="course-header">
+                        <h3>DevOps простым языком</h3>
+                        <span class="date">2025</span>
+                    </div>
+                    <div class="course-desc">Основы DevOps, CI/CD, контейнеризация</div>
                 </div>
-                <div class="education-item">
-                    <h3>Python: курсы на Stepik</h3>
-                    <span class="date">2022-2025</span>
+                <div class="course-item" style="margin-top: 12px;">
+                    <div class="course-header">
+                        <h3>Python: курсы на Stepik</h3>
+                        <span class="date">2022-2025</span>
+                    </div>
+                    <div class="course-desc">Python с нуля до продвинутого уровня</div>
                 </div>
-                <div class="education-item">
-                    <h3>Linux администратор (самообучение)</h3>
-                    <span class="date">2024</span>
+                <div class="course-item" style="margin-top: 12px;">
+                    <div class="course-header">
+                        <h3>Linux администратор</h3>
+                        <span class="date">2024</span>
+                    </div>
+                    <div class="course-desc">Самообучение, администрирование серверов</div>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <div class="glass-card" style="padding: 20px 45px;">
-            <footer class="footer">
-                <p>© 2026 — Создано с ❤️ на Flask • DevOps Resume Site</p>
-            </footer>
+            <!-- Footer -->
+            <div class="footer">
+                © 2026 — Создано с ❤️ на Flask
+            </div>
         </div>
     </div>
 </body>
