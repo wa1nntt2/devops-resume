@@ -63,21 +63,12 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            echo "🔐 Логин в GHCR..."
             echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
-            echo "📦 Скачиваем образ..."
             docker pull ghcr.io/${{ github.repository }}:latest
-            
-            echo "🔄 Перезапускаем контейнер..."
             docker stop devops-resume || true
             docker rm devops-resume || true
             docker run -d \
               --name devops-resume \
               --restart unless-stopped \
               -p 5001:5000 \
-              -v /opt/devops-resume/static:/app/static \
-              -v /opt/devops-resume/templates:/app/templates \
               ghcr.io/${{ github.repository }}:latest
-            
-            echo "✅ Деплой завершён!"
