@@ -5,82 +5,23 @@
 }
 
 body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 30%, #a5b4fc 60%, #818cf8 100%);
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 20px;
-    position: relative;
-}
-
-/* Декоративные круги */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    border-radius: 50%;
-    opacity: 0.2;
-    z-index: 0;
-    animation: float 25s ease-in-out infinite;
-}
-
-body::before {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, #818cf8, transparent 70%);
-    top: -200px;
-    right: -200px;
-    animation-delay: -5s;
-}
-
-body::after {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #a78bfa, transparent 70%);
-    bottom: -150px;
-    left: -150px;
-    animation-delay: -12s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-    33% { transform: translate(40px, -40px) scale(1.1) rotate(5deg); }
-    66% { transform: translate(-30px, 30px) scale(0.9) rotate(-5deg); }
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #f0f2f5;
+    padding: 40px 20px;
+    color: #1a1a2e;
+    line-height: 1.5;
 }
 
 .container {
     max-width: 1100px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 20px;
-}
-
-/* Glassmorphism карточки - светлые */
-.glass-card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    padding: 28px 28px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 0;
-}
-
-.glass-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        0 12px 48px rgba(0, 0, 0, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    gap: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* Левая колонка */
@@ -97,69 +38,64 @@ body::after {
     gap: 20px;
 }
 
-/* Header */
-.header {
-    text-align: left;
-    margin-bottom: 0;
-}
-
+/* Заголовок */
 .header h1 {
-    font-size: 2.2rem;
+    font-size: 28px;
     font-weight: 700;
-    color: #1a202c;
+    color: #1a1a2e;
+    margin-bottom: 2px;
     letter-spacing: -0.5px;
-    margin-bottom: 4px;
 }
 
 .header .subtitle {
-    font-size: 1rem;
+    font-size: 16px;
     color: #4A6CF7;
     font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #4A6CF7;
 }
 
 /* Контакты */
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
-.contacts .contact-item {
+.contact-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #2d3748;
+    padding: 4px 0;
 }
 
-.contacts .contact-item:last-child {
-    border-bottom: none;
-}
-
-.contacts .contact-item .icon {
-    width: 24px;
+.contact-item .icon {
+    width: 22px;
     color: #4A6CF7;
-    font-size: 1rem;
+    font-size: 14px;
 }
 
 /* Разделы */
+.section {
+    margin-bottom: 0;
+}
+
 .section-title {
-    font-size: 0.8rem;
+    font-size: 14px;
     font-weight: 700;
     color: #4A6CF7;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     margin-bottom: 14px;
     padding-bottom: 8px;
-    border-bottom: 2px solid rgba(74, 108, 247, 0.15);
+    border-bottom: 2px solid #e8ecf1;
 }
 
-/* Навыки */
+/* Навыки - список */
 .skills-list {
     list-style: none;
     padding: 0;
@@ -170,8 +106,8 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 6px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f2f5;
+    font-size: 14px;
 }
 
 .skills-list li:last-child {
@@ -179,17 +115,16 @@ body::after {
 }
 
 .skill-name {
-    color: #2d3748;
+    color: #1a1a2e;
     font-weight: 500;
 }
 
 .skill-level {
-    font-size: 0.7rem;
+    font-size: 12px;
     color: #4A6CF7;
-    background: rgba(74, 108, 247, 0.08);
+    background: #eef2ff;
     padding: 2px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(74, 108, 247, 0.1);
+    border-radius: 10px;
     font-weight: 600;
 }
 
@@ -199,17 +134,17 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
-    font-size: 0.9rem;
-    color: #2d3748;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    font-size: 14px;
+    color: #1a1a2e;
+    border-bottom: 1px solid #f0f2f5;
 }
 
 .language-item:last-child {
     border-bottom: none;
 }
 
-.language-item .lang-level {
-    font-size: 0.75rem;
+.lang-level {
+    font-size: 12px;
     color: #718096;
 }
 
@@ -221,18 +156,17 @@ body::after {
 }
 
 .quality-tag {
-    font-size: 0.8rem;
-    color: #2d3748;
-    background: rgba(74, 108, 247, 0.06);
+    font-size: 13px;
+    color: #1a1a2e;
+    background: #f0f2f5;
     padding: 4px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(74, 108, 247, 0.08);
+    border-radius: 6px;
     font-weight: 500;
 }
 
 /* Опыт работы */
 .experience-item {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .experience-item:last-child {
@@ -249,25 +183,24 @@ body::after {
 }
 
 .experience-header h3 {
-    font-size: 1.05rem;
+    font-size: 17px;
     font-weight: 600;
-    color: #1a202c;
+    color: #1a1a2e;
 }
 
 .experience-header .company {
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #4a5568;
     font-weight: 500;
 }
 
 .experience-header .date {
-    font-size: 0.75rem;
+    font-size: 13px;
     color: #718096;
-    background: rgba(0, 0, 0, 0.04);
-    padding: 2px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
     white-space: nowrap;
+    background: #f0f2f5;
+    padding: 2px 12px;
+    border-radius: 6px;
 }
 
 .experience-item ul {
@@ -277,15 +210,15 @@ body::after {
 }
 
 .experience-item ul li {
-    font-size: 0.88rem;
+    font-size: 14px;
     color: #4a5568;
-    padding: 2px 0 2px 18px;
+    padding: 3px 0 3px 18px;
     position: relative;
     line-height: 1.6;
 }
 
 .experience-item ul li::before {
-    content: '▸';
+    content: '•';
     position: absolute;
     left: 0;
     color: #4A6CF7;
@@ -294,54 +227,48 @@ body::after {
 
 .achievement {
     margin-top: 6px;
-    font-size: 0.85rem;
-    color: #2d3748;
-    padding: 6px 14px;
-    background: rgba(74, 108, 247, 0.06);
-    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a2e;
+    padding: 8px 14px;
+    background: #eef2ff;
+    border-radius: 6px;
     border-left: 3px solid #4A6CF7;
 }
 
 /* О себе */
 .about-text {
-    font-size: 0.92rem;
+    font-size: 14px;
     color: #4a5568;
     line-height: 1.7;
 }
 
 /* Хобби */
 .hobby-text {
-    font-size: 0.92rem;
+    font-size: 14px;
     color: #4a5568;
     line-height: 1.7;
 }
 
 /* Рекомендации */
 .recommendation-item {
-    font-size: 0.85rem;
+    font-size: 14px;
     color: #4a5568;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.recommendation-item:last-child {
-    border-bottom: none;
+    padding: 6px 0;
 }
 
 .recommendation-item .rec-name {
-    color: #1a202c;
+    color: #1a1a2e;
     font-weight: 600;
 }
 
 .recommendation-item .rec-company {
-    font-size: 0.8rem;
+    font-size: 13px;
     color: #718096;
 }
 
 .recommendation-item .rec-contact {
-    font-size: 0.75rem;
+    font-size: 12px;
     color: #4A6CF7;
-    opacity: 0.7;
 }
 
 /* Курсы */
@@ -353,7 +280,7 @@ body::after {
     margin-bottom: 0;
 }
 
-.course-item .course-header {
+.course-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -361,22 +288,22 @@ body::after {
     gap: 8px;
 }
 
-.course-item .course-header h3 {
-    font-size: 1rem;
+.course-header h3 {
+    font-size: 15px;
     font-weight: 600;
-    color: #1a202c;
+    color: #1a1a2e;
 }
 
-.course-item .course-header .date {
-    font-size: 0.75rem;
+.course-header .date {
+    font-size: 12px;
     color: #718096;
-    background: rgba(0, 0, 0, 0.04);
-    padding: 2px 14px;
-    border-radius: 12px;
+    background: #f0f2f5;
+    padding: 2px 12px;
+    border-radius: 6px;
 }
 
-.course-item .course-desc {
-    font-size: 0.85rem;
+.course-desc {
+    font-size: 13px;
     color: #718096;
     margin-top: 2px;
 }
@@ -384,17 +311,18 @@ body::after {
 /* Footer */
 .footer {
     text-align: center;
-    padding-top: 0;
-    color: rgba(0, 0, 0, 0.15);
-    font-size: 0.7rem;
-    letter-spacing: 1px;
+    color: #c0c4cc;
+    font-size: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #f0f2f5;
 }
 
 /* Адаптивность */
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     .container {
         grid-template-columns: 1fr;
-        gap: 16px;
+        padding: 24px;
+        gap: 20px;
     }
     
     .left-column {
@@ -406,14 +334,18 @@ body::after {
     }
 }
 
-@media (max-width: 600px) {
-    .glass-card {
-        padding: 20px 16px;
-        border-radius: 16px;
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+    
+    .container {
+        padding: 16px;
+        border-radius: 8px;
     }
     
     .header h1 {
-        font-size: 1.8rem;
+        font-size: 22px;
     }
     
     .experience-header {
