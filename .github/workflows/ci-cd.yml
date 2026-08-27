@@ -7,7 +7,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  PYTHONPATH: ${{ github.workspace }}
 
 jobs:
   test:
@@ -45,9 +44,20 @@ jobs:
             ghcr.io/${{ github.repository }}:${{ github.sha }}
 
   deploy:
-    name: Deploy
+    name: Deploy to Yandex Cloud
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Yandex Cloud
-        run: echo "Deploy step - will be configured"
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd /opt/devops-resume
+            git pull origin main
+            docker build -t devops-resume:latest .
+            docker stop devops-resume || true
+            docker rm devops-resume || true
+            docker run -d --name devops-resume -p 5001:5000 --restart unless-stopped devops-resume:latest
