@@ -1,79 +1,114 @@
-DevOps Resume Site
+
+# 🚀 DevOps Resume Site
+
 Сайт-резюме DevOps инженера с полным циклом CI/CD и развертыванием в облаке.
 
-Стек технологий
-Backend: Python, Flask, Gunicorn
+![CI/CD](https://github.com/wa1nntt2/devops-resume/actions/workflows/ci-cd.yml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Docker](https://img.shields.io/badge/Docker-28.2-blue)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-1.35-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Контейнеризация: Docker, Docker Compose
+## 📋 Описание
 
-Оркестрация: Kubernetes (minikube)
+Pet-проект для отработки DevOps практик: от написания кода до автоматического деплоя в облако. Включает полный цикл — контейнеризация, оркестрация, CI/CD, мониторинг и IaC.
 
-CI/CD: GitHub Actions
+## 🛠 Стек технологий
 
-Автоматизация: Ansible
+| Категория | Инструменты |
+|-----------|-------------|
+| **Backend** | Python 3.12, Flask, Gunicorn |
+| **Контейнеризация** | Docker, Docker Compose |
+| **Оркестрация** | Kubernetes (minikube) |
+| **CI/CD** | GitHub Actions |
+| **Автоматизация** | Ansible |
+| **Web-сервер** | Nginx (reverse proxy + HTTPS) |
+| **Мониторинг** | Prometheus, Grafana, Node Exporter |
+| **Облако** | Yandex Cloud |
 
-Web-сервер: Nginx (reverse proxy + HTTPS)
+## 🏗 Архитектура
 
-Мониторинг: Prometheus, Grafana, Node Exporter
+mermaid
+graph LR
+    A[GitHub] --> B[GitHub Actions]
+    B --> C[Тесты]
+    C --> D[Docker Build]
+    D --> E[GHCR]
+    D --> F[SSH Deploy]
+    F --> G[Yandex Cloud VM]
+    G --> H[Nginx :443]
+    H --> I[Flask :5000]
+    G --> J[Prometheus]
+    J --> K[Grafana]
 
-Облако: Yandex Cloud
-
-Архитектура
-text
-GitHub → GitHub Actions → Docker Build → GHCR
-                                    ↓
-                              SSH Deploy
-                                    ↓
-Yandex Cloud VM (Nginx → Flask → Gunicorn)
-                                    ↓
-                        Prometheus → Grafana
-Локальная разработка
-Запуск через Docker:
+🚀 Быстрый старт
+Локальный запуск
 bash
-docker build -t devops-resume:latest .
-docker run -d --name devops-resume -p 5000:5000 devops-resume:latest
-Запуск через Docker Compose:
+
+# Docker
+docker build -t devops-resume .
+docker run -d -p 5000:5000 devops-resume
+
+# Docker Compose
+docker compose up -d
+
+Kubernetes
 bash
-docker-compose up -d
-Запуск в Kubernetes (minikube):
-bash
+
 minikube start
 kubectl apply -f k8s/
 kubectl port-forward service/devops-resume-service 8080:80
-Деплой в Yandex Cloud
-Настройка сервера:
+
+☁️ Деплой в Yandex Cloud
 bash
+
+# Настройка сервера
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/setup-server.yml
-Деплой приложения:
-bash
+
+# Деплой приложения
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/deploy.yml
-Настройка Nginx:
-bash
+
+# Настройка Nginx + HTTPS
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/nginx.yml
-Настройка мониторинга:
-bash
+
+# Мониторинг
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/monitoring.yml
-CI/CD
-При push в main автоматически:
 
-Запускаются тесты (pytest)
+🔄 CI/CD Pipeline
 
-Собирается Docker образ
+При push в main:
 
-Образ пушится в GHCR
+    ✅ Test — pytest
 
-Происходит деплой на VM через SSH
+    🐳 Build — Docker image
 
-Мониторинг
-Prometheus: http://<IP>:9090
+    📦 Push — GHCR
 
-Grafana: http://<IP>:3000
+    🚀 Deploy — SSH на VM
 
-Node Exporter: http://<IP>:9100
+📊 Мониторинг
+Сервис	URL
+Сайт	https://<IP>
+Prometheus	http://<IP>:9090
+Grafana	http://<IP>:3000
+Node Exporter	http://<IP>:9100
+📁 Структура проекта
+text
 
-Автор
+devops-resume/
+├── .github/workflows/     # CI/CD
+├── ansible/               # Playbooks
+├── k8s/                   # Kubernetes манифесты
+├── monitoring/            # Prometheus + Grafana
+├── static/                # CSS
+├── templates/             # HTML
+├── tests/                 # Pytest
+├── app.py                 # Flask приложение
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+
+👤 Автор
+
 wa1nntt2 — DevOps Engineer
-
-GitHub: wa1nntt2
-
-Email: wa1nntt2@gmail.com
+```
