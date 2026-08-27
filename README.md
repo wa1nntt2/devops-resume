@@ -111,10 +111,4 @@ devops-resume/
 👤 Автор
 
 wa1nntt2 — DevOps Engineer
-
-https://img.shields.io/badge/GitHub-wa1nntt2-black
-https://img.shields.io/badge/Email-wa1nntt2%2540gmail.com-red
-📝 License
-
-MIT © 2026 wa1nntt2
 ```
