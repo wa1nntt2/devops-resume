@@ -5,162 +5,396 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     min-height: 100vh;
+    background: linear-gradient(135deg, #0c0e1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px;
-    line-height: 1.4;
+    padding: 30px 20px;
+    position: relative;
+}
+
+/* Декоративные круги */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+    animation: float 25s ease-in-out infinite;
+}
+
+body::before {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #4A90D9, transparent 70%);
+    top: -200px;
+    right: -200px;
+    animation-delay: -5s;
+}
+
+body::after {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #00D4FF, transparent 70%);
+    bottom: -150px;
+    left: -150px;
+    animation-delay: -12s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(40px, -40px) scale(1.1) rotate(5deg); }
+    66% { transform: translate(-30px, 30px) scale(0.9) rotate(-5deg); }
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1100px;
     width: 100%;
-    background: white;
-    border-radius: 15px;
-    padding: 25px 35px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    max-height: 95vh;
-    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
 }
 
+/* Glassmorphism карточки */
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 30px 28px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Левая колонка */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Правая колонка */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header */
 .header {
-    text-align: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    margin-bottom: 0;
 }
 
-h1 {
-    font-size: 2em;
-    color: #333;
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-.subtitle {
-    font-size: 1.1em;
-    color: #667eea;
+.header .subtitle {
+    font-size: 1rem;
+    color: #4A90D9;
     font-weight: 500;
-    margin: 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
+/* Контакты в левой колонке */
 .contacts {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
-    margin-top: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.contacts span {
-    background: #f8f9fa;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    color: #555;
+.contacts .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.section {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.section:last-of-type {
+.contacts .contact-item:last-child {
     border-bottom: none;
 }
 
-h2 {
-    color: #667eea;
-    font-size: 1.2em;
-    margin-bottom: 8px;
+.contacts .contact-item .icon {
+    width: 24px;
+    color: #4A90D9;
+    font-size: 1rem;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+/* Разделы */
+.section {
+    margin-bottom: 0;
 }
 
-.skill-category h3 {
-    color: #333;
-    font-size: 0.85em;
-    margin-bottom: 5px;
+.section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4A90D9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(74, 144, 217, 0.2);
 }
 
-.tag {
-    display: inline-block;
-    background: #f0f0f0;
-    color: #333;
-    padding: 3px 10px;
+/* Список навыков */
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skills-list li:last-child {
+    border-bottom: none;
+}
+
+.skill-name {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.skill-level {
+    font-size: 0.7rem;
+    color: #4A90D9;
+    background: rgba(74, 144, 217, 0.1);
+    padding: 2px 12px;
     border-radius: 12px;
-    font-size: 0.75em;
-    margin: 2px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
 }
 
-.experience-item, .project-item {
-    margin-bottom: 10px;
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-tag {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Опыт работы */
+.experience-item {
+    margin-bottom: 20px;
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
 }
 
 .experience-header {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.experience-header h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.experience-header .company {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.experience-header .date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    white-space: nowrap;
+}
+
+.experience-item ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 6px;
+}
+
+.experience-item ul li {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 2px 0 2px 18px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.experience-item ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #4A90D9;
+}
+
+.achievement {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 6px 14px;
+    background: rgba(74, 144, 217, 0.05);
+    border-radius: 8px;
+    border-left: 2px solid #4A90D9;
+}
+
+/* Языки */
+.language-item {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 4px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-h3 {
-    color: #333;
-    font-size: 1em;
+.language-item .lang-level {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.date {
-    color: #888;
-    font-size: 0.8em;
+/* Качества */
+.qualities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.company {
-    color: #667eea;
-    font-size: 0.85em;
-    margin: 3px 0;
+.quality-tag {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 4px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-ul {
-    padding-left: 15px;
-    color: #555;
-    font-size: 0.8em;
+/* О себе */
+.about-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
 }
 
-li {
-    margin: 3px 0;
+/* Хобби */
+.hobby-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
 }
 
-.project-link {
-    display: inline-block;
-    color: #667eea;
-    text-decoration: none;
-    font-size: 0.85em;
+/* Рекомендации */
+.recommendation-item {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+.recommendation-item:last-child {
+    border-bottom: none;
+}
+
+.recommendation-item .rec-name {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.recommendation-item .rec-company {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.recommendation-item .rec-contact {
+    font-size: 0.75rem;
+    color: rgba(74, 144, 217, 0.5);
+}
+
+/* Footer */
 .footer {
     text-align: center;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #f0f0f0;
-    color: #888;
-    font-size: 0.75em;
+    padding-top: 0;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
+/* Адаптивность */
+@media (max-width: 900px) {
     .container {
-        padding: 15px;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .left-column {
+        order: 0;
     }
     
-    h1 {
-        font-size: 1.5em;
+    .right-column {
+        order: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .glass-card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .experience-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .experience-header .date {
+        align-self: flex-start;
     }
 }
