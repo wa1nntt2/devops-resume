@@ -3,114 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Engineer - Резюме</title>
+    <title>Николай Слонов | Backend-разработчик</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>Твое Имя</h1>
-            <p class="subtitle">DevOps Engineer</p>
-            <div class="contacts">
-                <span>📧 wa1nntt2@gmail.com</span>
-                <span>📱 +7 (902) 239 92 37</span>
-                <span>📍 Сызрань, Россия</span>
-                <span>💼 github.com/wa1nntt2</span>
+        <!-- Левая колонка -->
+        <div class="left-column">
+            <!-- Профиль -->
+            <div class="glass-card">
+                <header class="header">
+                    <h1>Слонов Николай</h1>
+                    <p class="subtitle">Backend-разработчик</p>
+                    <div class="contacts">
+                        <div class="contact-item">
+                            <span class="icon">📍</span>
+                            <span>Москва, м. Митино</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">🎂</span>
+                            <span>31 год</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📱</span>
+                            <span>+7 900 000-00-01</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">✉️</span>
+                            <span>serverov@myresume.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">💻</span>
+                            <span>github.com/wa1nntt2</span>
+                        </div>
+                    </div>
+                </header>
             </div>
-        </header>
 
-        <section class="section">
-            <h2>Технический стек</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Контейнеризация</h3>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Kubernetes</span>
-                </div>
-                <div class="skill-category">
-                    <h3>CI/CD</h3>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">GitLab CI</span>
-                </div>
-                <div class="skill-category">
-                    <h3>IaC</h3>
-                    <span class="tag">Ansible</span>
-                    <span class="tag">Terraform</span>
-                </div>
-                <div class="skill-category">
-                    <h3>Мониторинг</h3>
-                    <span class="tag">Prometheus</span>
-                    <span class="tag">Grafana</span>
-                </div>
-                <div class="skill-category">
-                    <h3>Языки</h3>
-                    <span class="tag">Python</span>
-                    <span class="tag">Bash</span>
-                </div>
-                <div class="skill-category">
-                    <h3>Облака</h3>
-                    <span class="tag">Yandex Cloud</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Опыт</h2>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>DevOps Engineer (обучение)</h3>
-                    <span class="date">2025 - настоящее время</span>
-                </div>
-                <ul>
-                    <li>Автоматизация деплоя через Ansible и GitHub Actions</li>
-                    <li>Контейнеризация приложений (Docker, Kubernetes)</li>
-                    <li>Настройка мониторинга (Prometheus, Grafana)</li>
+            <!-- Навыки -->
+            <div class="glass-card">
+                <h2 class="section-title">🛠 Навыки</h2>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">PHP 8</span>
+                        <span class="skill-level">Профессиональный</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">SQL, MySQL</span>
+                        <span class="skill-level">Опытный</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">YII2, Laravel5, Symfony2</span>
+                        <span class="skill-level">Опытный</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">CakePHP, Curt</span>
+                        <span class="skill-level">Опытный</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Nginx, NetCat</span>
+                        <span class="skill-level">Опытный</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Apache HTTP Server</span>
+                        <span class="skill-level">Базовый</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">WordPress, Joomla, Bitrix</span>
+                        <span class="skill-level">Базовый</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">JavaScript, jQuery</span>
+                        <span class="skill-level">Базовый</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">HTML5, CSS3, Bootstrap</span>
+                        <span class="skill-level">Базовый</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Git, CVS, SVN</span>
+                        <span class="skill-level">Опытный</span>
+                    </li>
                 </ul>
             </div>
-        </section>
 
-        <section class="section">
-            <h2>Проекты</h2>
-            <div class="project-item">
-                <div class="experience-header">
-                    <h3>DevOps Resume Site</h3>
-                    <span class="date">2026</span>
+            <!-- Языки -->
+            <div class="glass-card">
+                <h2 class="section-title">🌍 Языки</h2>
+                <div class="language-item">
+                    <span>Английский</span>
+                    <span class="lang-level">C1 — Продвинутый</span>
                 </div>
-                <ul>
-                    <li>Полный цикл: Flask → Docker → K8s → Ansible → Yandex Cloud</li>
-                    <li>CI/CD: GitHub Actions (тесты, сборка, деплой)</li>
-                </ul>
-                <a href="https://github.com/wa1nntt2/devops-resume" class="project-link">GitHub →</a>
-            </div>
-            <div class="project-item">
-                <div class="experience-header">
-                    <h3>IT Interview Trainer</h3>
-                    <span class="date">2025</span>
-                </div>
-                <ul>
-                    <li>Fullstack: FastAPI + React + PostgreSQL</li>
-                    <li>CI/CD: GitLab CI, Docker</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Образование</h2>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>DevOps простым языком</h3>
-                    <span class="date">2025</span>
-                </div>
-                <div class="experience-header">
-                    <h3>Python: курсы на Stepik</h3>
-                    <span class="date">2022-2025</span>
+                <div class="language-item">
+                    <span>Немецкий</span>
+                    <span class="lang-level">II — Средний</span>
                 </div>
             </div>
-        </section>
 
-        <footer class="footer">
-            <p>© 2026 — Создано с ❤️ и Flask</p>
-        </footer>
+            <!-- Качества -->
+            <div class="glass-card">
+                <h2 class="section-title">⭐ Качества</h2>
+                <div class="qualities">
+                    <span class="quality-tag">Обучаемость</span>
+                    <span class="quality-tag">Инновационность</span>
+                    <span class="quality-tag">Ответственность</span>
+                    <span class="quality-tag">Трудоемкость</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка -->
+        <div class="right-column">
+            <!-- О себе -->
+            <div class="glass-card">
+                <h2 class="section-title">👤 О себе</h2>
+                <p class="about-text">
+                    Всегда увлекаюсь веб-разработкой. Хочу работать над разнообразными проектами. 
+                    Есть небольшой опыт с Python. Занимаюсь лёгкой атлетикой. Посещаю научные 
+                    конференции и казахстан.
+                </p>
+            </div>
+
+            <!-- Опыт работы -->
+            <div class="glass-card">
+                <h2 class="section-title">💼 Опыт работы</h2>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Backend-разработчик</h3>
+                            <div class="company">ООО «Веб-разработка от А до Я»</div>
+                        </div>
+                        <span class="date">07.2011 — н/в</span>
+                    </div>
+                    <ul>
+                        <li>Сбор требований, участие в составлении ТЗ</li>
+                        <li>Обновление и управление версиями</li>
+                        <li>Создание функционала, настройка серверов</li>
+                        <li>Техническая поддержка, оптимизация</li>
+                        <li>Создание сайтов на WordPress, Joomla, Bitrix</li>
+                        <li>Работа с внешними API</li>
+                    </ul>
+                    <div class="achievement">
+                        🏆 Участие в разработке собственной CRM
+                    </div>
+                </div>
+            </div>
+
+            <!-- Проекты / Курсы -->
+            <div class="glass-card">
+                <h2 class="section-title">📚 Курсы</h2>
+                <div class="experience-item" style="margin-bottom: 0;">
+                    <div class="experience-header">
+                        <h3>Skill-factory</h3>
+                        <span class="date">2025</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Латинские проектирование PHP</p>
+                </div>
+                <div class="experience-item" style="margin-bottom: 0; margin-top: 12px;">
+                    <div class="experience-header">
+                        <h3>HTML-academy</h3>
+                        <span class="date">2025</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Фреймворки PHP</p>
+                </div>
+            </div>
+
+            <!-- Хобби -->
+            <div class="glass-card">
+                <h2 class="section-title">🎯 Хобби</h2>
+                <p class="hobby-text">
+                    Разработка чат-ботов. Увлекаюсь системами обработки языка на основе технологии GoLive. 
+                    Изучаю нейронные сети.
+                </p>
+            </div>
+
+            <!-- Рекомендации -->
+            <div class="glass-card">
+                <h2 class="section-title">🤝 Рекомендации</h2>
+                <div class="recommendation-item">
+                    <div class="rec-name">Петров Константин Сергеевич</div>
+                    <div class="rec-company">ООО «Веб-разработка от А до Я»</div>
+                    <div class="rec-contact">📧 petrov@myresume.ru | 📱 +7 900 000-00-02</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; color: rgba(255,255,255,0.1); font-size: 0.7rem; padding: 8px 0;">
+                © 2026 — Создано с ❤️ на Flask
+            </div>
+        </div>
     </div>
 </body>
 </html>
