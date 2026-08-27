@@ -1,3 +1,4 @@
+
 # 🚀 DevOps Resume Site
 
 Сайт-резюме DevOps инженера с полным циклом CI/CD и развертыванием в облаке.
@@ -27,7 +28,7 @@ Pet-проект для отработки DevOps практик: от напи�
 
 ## 🏗 Архитектура
 
-```mermaid
+mermaid
 graph LR
     A[GitHub] --> B[GitHub Actions]
     B --> C[Тесты]
@@ -116,66 +117,4 @@ https://img.shields.io/badge/Email-wa1nntt2%2540gmail.com-red
 📝 License
 
 MIT © 2026 wa1nntt2
-text
-
-
-Обнови файл:
-
-```bash
-cat > README.md << 'MARKDOWN'
-# 🚀 DevOps Resume Site
-
-Сайт-резюме DevOps инженера с полным циклом CI/CD и развертыванием в облаке.
-
-## 📋 Описание
-
-Pet-проект для отработки DevOps практик: от написания кода до автоматического деплоя в облако.
-
-## 🛠 Стек технологий
-
-| Категория | Инструменты |
-|-----------|-------------|
-| **Backend** | Python 3.12, Flask, Gunicorn |
-| **Контейнеризация** | Docker, Docker Compose |
-| **Оркестрация** | Kubernetes (minikube) |
-| **CI/CD** | GitHub Actions |
-| **Автоматизация** | Ansible |
-| **Web-сервер** | Nginx (reverse proxy + HTTPS) |
-| **Мониторинг** | Prometheus, Grafana, Node Exporter |
-| **Облако** | Yandex Cloud |
-
-## 🚀 Быстрый старт
-
-### Локальный запуск
-```bash
-docker build -t devops-resume .
-docker run -d -p 5000:5000 devops-resume
-
-Kubernetes
-bash
-
-minikube start
-kubectl apply -f k8s/
-
-☁️ Деплой в Yandex Cloud
-bash
-
-ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/setup-server.yml
-ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/deploy.yml
-ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/nginx.yml
-ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/monitoring.yml
-
-🔄 CI/CD
-
-При push в main: тесты → сборка → push в GHCR → деплой на VM
-📊 Мониторинг
-Сервис	URL
-Сайт	https://<IP>
-Prometheus	http://<IP>:9090
-Grafana	http://<IP>:3000
-👤 Автор
-
-wa1nntt2 — DevOps Engineer
-
-GitHub: wa1nntt2
-Email: wa1nntt2@gmail.com
+```
