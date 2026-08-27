@@ -7,7 +7,7 @@
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0c0e1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 30%, #a5b4fc 60%, #818cf8 100%);
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@ body::after {
     content: '';
     position: fixed;
     border-radius: 50%;
-    opacity: 0.15;
+    opacity: 0.2;
     z-index: 0;
     animation: float 25s ease-in-out infinite;
 }
@@ -30,7 +30,7 @@ body::after {
 body::before {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, #4A90D9, transparent 70%);
+    background: radial-gradient(circle, #818cf8, transparent 70%);
     top: -200px;
     right: -200px;
     animation-delay: -5s;
@@ -39,7 +39,7 @@ body::before {
 body::after {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, #00D4FF, transparent 70%);
+    background: radial-gradient(circle, #a78bfa, transparent 70%);
     bottom: -150px;
     left: -150px;
     animation-delay: -12s;
@@ -61,26 +61,26 @@ body::after {
     gap: 20px;
 }
 
-/* Glassmorphism карточки */
+/* Glassmorphism карточки - светлые */
 .glass-card {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    padding: 30px 28px;
+    padding: 28px 28px;
     box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 0;
 }
 
 .glass-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-        0 12px 48px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        0 12px 48px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 /* Левая колонка */
@@ -106,36 +106,35 @@ body::after {
 .header h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #1a202c;
     letter-spacing: -0.5px;
     margin-bottom: 4px;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .header .subtitle {
     font-size: 1rem;
-    color: #4A90D9;
-    font-weight: 500;
+    color: #4A6CF7;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-/* Контакты в левой колонке */
+/* Контакты */
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    gap: 6px;
 }
 
 .contacts .contact-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    font-size: 0.9rem;
+    color: #2d3748;
 }
 
 .contacts .contact-item:last-child {
@@ -144,27 +143,23 @@ body::after {
 
 .contacts .contact-item .icon {
     width: 24px;
-    color: #4A90D9;
+    color: #4A6CF7;
     font-size: 1rem;
 }
 
 /* Разделы */
-.section {
-    margin-bottom: 0;
-}
-
 .section-title {
     font-size: 0.8rem;
-    font-weight: 600;
-    color: #4A90D9;
+    font-weight: 700;
+    color: #4A6CF7;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(74, 144, 217, 0.2);
+    border-bottom: 2px solid rgba(74, 108, 247, 0.15);
 }
 
-/* Список навыков */
+/* Навыки */
 .skills-list {
     list-style: none;
     padding: 0;
@@ -175,9 +170,8 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 6px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
 }
 
 .skills-list li:last-child {
@@ -185,31 +179,55 @@ body::after {
 }
 
 .skill-name {
-    color: rgba(255, 255, 255, 0.6);
+    color: #2d3748;
+    font-weight: 500;
 }
 
 .skill-level {
     font-size: 0.7rem;
-    color: #4A90D9;
-    background: rgba(74, 144, 217, 0.1);
+    color: #4A6CF7;
+    background: rgba(74, 108, 247, 0.08);
     padding: 2px 12px;
     border-radius: 12px;
-    border: 1px solid rgba(74, 144, 217, 0.15);
+    border: 1px solid rgba(74, 108, 247, 0.1);
+    font-weight: 600;
 }
 
-.skill-tags {
+/* Языки */
+.language-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: #2d3748;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.language-item:last-child {
+    border-bottom: none;
+}
+
+.language-item .lang-level {
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+/* Качества */
+.qualities {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
 }
 
-.skill-tag {
+.quality-tag {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.04);
-    padding: 3px 12px;
+    color: #2d3748;
+    background: rgba(74, 108, 247, 0.06);
+    padding: 4px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(74, 108, 247, 0.08);
+    font-weight: 500;
 }
 
 /* Опыт работы */
@@ -233,21 +251,22 @@ body::after {
 .experience-header h3 {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #1a202c;
 }
 
 .experience-header .company {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #4a5568;
+    font-weight: 500;
 }
 
 .experience-header .date {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.04);
+    color: #718096;
+    background: rgba(0, 0, 0, 0.04);
     padding: 2px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
     white-space: nowrap;
 }
 
@@ -259,7 +278,7 @@ body::after {
 
 .experience-item ul li {
     font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: #4a5568;
     padding: 2px 0 2px 18px;
     position: relative;
     line-height: 1.6;
@@ -269,70 +288,40 @@ body::after {
     content: '▸';
     position: absolute;
     left: 0;
-    color: #4A90D9;
+    color: #4A6CF7;
+    font-weight: bold;
 }
 
 .achievement {
     margin-top: 6px;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #2d3748;
     padding: 6px 14px;
-    background: rgba(74, 144, 217, 0.05);
+    background: rgba(74, 108, 247, 0.06);
     border-radius: 8px;
-    border-left: 2px solid #4A90D9;
-}
-
-/* Языки */
-.language-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 0;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.language-item .lang-level {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-/* Качества */
-.qualities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.quality-tag {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.04);
-    padding: 4px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-left: 3px solid #4A6CF7;
 }
 
 /* О себе */
 .about-text {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.92rem;
+    color: #4a5568;
     line-height: 1.7;
 }
 
 /* Хобби */
 .hobby-text {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.92rem;
+    color: #4a5568;
     line-height: 1.7;
 }
 
 /* Рекомендации */
 .recommendation-item {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: #4a5568;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .recommendation-item:last-child {
@@ -340,25 +329,63 @@ body::after {
 }
 
 .recommendation-item .rec-name {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
+    color: #1a202c;
+    font-weight: 600;
 }
 
 .recommendation-item .rec-company {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: #718096;
 }
 
 .recommendation-item .rec-contact {
     font-size: 0.75rem;
-    color: rgba(74, 144, 217, 0.5);
+    color: #4A6CF7;
+    opacity: 0.7;
+}
+
+/* Курсы */
+.course-item {
+    margin-bottom: 12px;
+}
+
+.course-item:last-child {
+    margin-bottom: 0;
+}
+
+.course-item .course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.course-item .course-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.course-item .course-header .date {
+    font-size: 0.75rem;
+    color: #718096;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 2px 14px;
+    border-radius: 12px;
+}
+
+.course-item .course-desc {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 2px;
 }
 
 /* Footer */
 .footer {
     text-align: center;
     padding-top: 0;
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(0, 0, 0, 0.15);
     font-size: 0.7rem;
     letter-spacing: 1px;
 }
@@ -396,5 +423,11 @@ body::after {
     
     .experience-header .date {
         align-self: flex-start;
+    }
+    
+    .skills-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
     }
 }
